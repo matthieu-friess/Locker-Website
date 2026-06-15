@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Locker+ — Vestiaires connectés pour le sport &amp; les campus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="image-slot.js"></script>
+<style>
+  :root{
+    --bg:#FAFAFA;
+    --surface:#FFFFFF;
+    --ink:#0A0A0B;
+    --ink-2:#1F2024;
+    --muted:#5E6068;
+    --muted-2:#8A8D95;
+    --line:#ECECEE;
+    --line-2:#E2E2E5;
+    --chip:#F2F2F3;
+    --brand-navy:#0F1F47;
+    --brand-navy-2:#152A5E;
+    --brand-cyan:#1FB6FF;
+    --brand-cyan-2:#3FC3FF;
+    --accent-1: var(--brand-navy);
+    --accent-2: var(--brand-cyan);
+    --grad: linear-gradient(100deg, var(--brand-navy) 0%, var(--brand-cyan) 100%);
+    --radius-s:10px;
+    --radius-m:16px;
+    --radius-l:24px;
+    --radius-xl:32px;
+    --shadow-soft: 0 1px 2px rgba(10,10,11,.04), 0 8px 24px -8px rgba(10,10,11,.08);
+    --shadow-card: 0 1px 2px rgba(10,10,11,.04), 0 24px 60px -24px rgba(10,10,11,.18);
+    --max: 1240px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    font-feature-settings:'cv11','ss01','ss03';
+    line-height:1.5;
+  }
+  ::selection{background:color-mix(in oklch, var(--accent-1) 30%, transparent); color:var(--ink)}
+  a{color:inherit; text-decoration:none}
+  img{max-width:100%; display:block}
+
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px}
+
+  /* ============ NAV ============ */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:color-mix(in srgb, var(--bg) 80%, transparent);
+    backdrop-filter:saturate(180%) blur(16px);
+    -webkit-backdrop-filter:saturate(180%) blur(16px);
+    border-bottom:1px solid transparent;
+    transition:border-color .2s;
+  }
+  .nav.scrolled{border-bottom-color:var(--line)}
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    height:68px;
+  }
+  .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:-.01em; font-size:16px}
+  .brand-mark{
+    width:28px; height:28px; flex:none;
+    background-image:url("logo-locker-plus.png");
+    background-size:contain; background-repeat:no-repeat; background-position:center;
+  }
+  .brand-mark.on-dark{
+    background-color:#fff; border-radius:7px;
+    background-size:80%;
+  }
+  .nav-links{display:flex; gap:28px; font-size:14px; color:var(--ink-2)}
+  .nav-links a{transition:color .15s}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{display:flex; gap:10px; align-items:center}
+  @media (max-width:880px){
+    .nav-links{display:none}
+  }
+
+  /* ============ BUTTONS ============ */
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:11px 18px; border-radius:999px;
+    font-weight:500; font-size:14px; letter-spacing:-.005em;
+    transition:transform .15s ease, background .15s, color .15s, box-shadow .2s, border-color .15s;
+    cursor:pointer; border:1px solid transparent;
+    white-space:nowrap;
+  }
+  .btn-dark{background:var(--brand-navy); color:#fff}
+  .btn-dark:hover{background:var(--brand-navy-2); transform:translateY(-1px); box-shadow:0 12px 28px -12px rgba(15,31,71,.5)}
+  .btn-ghost{background:transparent; color:var(--ink); border-color:var(--line-2)}
+  .btn-ghost:hover{background:var(--surface); border-color:var(--ink)}
+  .btn-light{background:#fff; color:var(--ink); border:1px solid var(--line-2)}
+  .btn-light:hover{border-color:var(--ink)}
+  .btn-lg{padding:15px 26px; font-size:15px}
+  .btn .arrow{transition:transform .2s}
+  .btn:hover .arrow{transform:translateX(3px)}
+
+  /* ============ TYPO ============ */
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:12px; text-transform:uppercase; letter-spacing:.14em;
+    color:var(--muted); font-weight:500;
+  }
+  .eyebrow .dot{
+    width:6px; height:6px; border-radius:50%; background:var(--grad);
+  }
+  h1,h2,h3,h4{margin:0; letter-spacing:-.025em; line-height:1.05; font-weight:600}
+  h1{font-size:clamp(40px, 6.4vw, 84px); letter-spacing:-.035em; line-height:1.02}
+  h2{font-size:clamp(32px, 4.2vw, 56px); letter-spacing:-.03em; line-height:1.05}
+  h3{font-size:clamp(20px, 1.7vw, 24px); letter-spacing:-.015em}
+  .grad-text{
+    background:var(--grad);
+    -webkit-background-clip:text; background-clip:text;
+    color:transparent;
+  }
+  .lede{font-size:18px; color:var(--muted); line-height:1.55; max-width:60ch}
+
+  /* ============ SECTIONS ============ */
+  section{padding:120px 0; position:relative}
+  .section-head{display:flex; flex-direction:column; gap:18px; max-width:780px; margin-bottom:64px}
+  .section-head h2{max-width:14ch}
+
+  /* ============ HERO ============ */
+  .hero{padding:60px 0 120px; overflow:hidden; position:relative}
+  .hero-inner{display:grid; grid-template-columns:1.05fr .95fr; gap:64px; align-items:center}
+  @media (max-width:980px){.hero-inner{grid-template-columns:1fr; gap:48px}}
+  .hero-pill{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:6px 6px 6px 14px; border:1px solid var(--line-2);
+    border-radius:999px; background:#fff; font-size:13px; color:var(--ink-2);
+    box-shadow:var(--shadow-soft);
+    width:max-content;
+  }
+  .hero-pill .pill-tag{
+    background:var(--ink); color:#fff; padding:4px 10px; border-radius:999px;
+    font-size:11px; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+  }
+  .hero h1{margin:24px 0 24px}
+  .hero h1 .br-thin{font-weight:400; color:var(--muted-2)}
+  .hero-cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:36px}
+  .hero-meta{
+    display:flex; gap:32px; margin-top:48px; padding-top:32px;
+    border-top:1px solid var(--line);
+  }
+  .hero-meta div{display:flex; flex-direction:column; gap:4px}
+  .hero-meta b{font-size:22px; font-weight:600; letter-spacing:-.02em}
+  .hero-meta span{font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em}
+
+  .hero-visual{
+    position:relative; aspect-ratio: 4/5;
+    border-radius:var(--radius-xl);
+    background:
+      radial-gradient(120% 80% at 80% 0%, color-mix(in oklch, var(--accent-2) 16%, transparent), transparent 60%),
+      radial-gradient(120% 100% at 0% 100%, color-mix(in oklch, var(--accent-1) 18%, transparent), transparent 55%),
+      linear-gradient(180deg, #F5F5F7, #ECECEE);
+    overflow:hidden;
+    box-shadow:var(--shadow-card);
+    border:1px solid var(--line);
+  }
+  .hero-visual image-slot{
+    position:absolute; inset:0;
+    --is-bg: transparent;
+    --is-border: transparent;
+    --is-radius: var(--radius-xl);
+  }
+  /* fallback illustration (visible until user drops an image) */
+  .hero-illustration{
+    position:absolute; inset:0;
+    display:grid; place-items:center;
+    pointer-events:none;
+  }
+  .locker-stack{
+    position:relative; width:62%; aspect-ratio:3/4;
+    display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1.2fr 1fr 1fr;
+    gap:10px;
+    transform:rotate(-4deg);
+  }
+  .locker{
+    background:linear-gradient(160deg, #fff, #F1F1F4);
+    border:1px solid var(--line-2);
+    border-radius:14px;
+    position:relative;
+    box-shadow: inset 0 1px 0 #fff, 0 14px 40px -16px rgba(10,10,11,.18);
+  }
+  .locker::after{
+    content:""; position:absolute; left:50%; top:12px;
+    width:8px; height:8px; border-radius:50%;
+    background:var(--ink); transform:translateX(-50%);
+    box-shadow:0 0 0 2px rgba(255,255,255,.7), 0 0 14px color-mix(in oklch, var(--accent-1) 80%, transparent);
+  }
+  .locker.tall{grid-row:1 / span 2}
+  .locker.lit{
+    background:linear-gradient(160deg, var(--brand-navy), var(--brand-navy-2));
+    border-color:var(--brand-navy-2);
+  }
+  .locker.lit::after{
+    background:#22c55e;
+    box-shadow:0 0 0 2px rgba(0,0,0,.35), 0 0 18px color-mix(in oklch, 80% 0.2 145, transparent 30%);
+  }
+  .phone{
+    position:absolute;
+    width:38%; aspect-ratio:9/19;
+    right:6%; bottom:8%;
+    border-radius:28px;
+    background:linear-gradient(180deg, var(--brand-navy), var(--brand-navy-2));
+    border:1px solid var(--brand-navy-2);
+    box-shadow: 0 30px 60px -20px rgba(10,10,11,.55), inset 0 1px 0 rgba(255,255,255,.06);
+    transform:rotate(8deg);
+    overflow:hidden;
+  }
+  .phone::before{
+    content:""; position:absolute; left:50%; top:10px;
+    transform:translateX(-50%);
+    width:30%; height:18px; border-radius:99px; background:#000;
+  }
+  .phone-screen{
+    position:absolute; inset:8px; border-radius:22px;
+    background:
+      radial-gradient(80% 60% at 50% 30%, color-mix(in srgb, var(--brand-cyan) 38%, transparent), transparent 70%),
+      linear-gradient(180deg, var(--brand-navy-2), var(--brand-navy));
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:14px; padding:24px 14px; color:#fff;
+  }
+  .phone-screen .lock-ic{
+    width:42px; height:42px; border-radius:14px;
+    background:var(--grad);
+    display:grid; place-items:center;
+    box-shadow:0 10px 30px -8px color-mix(in oklch, var(--accent-2) 70%, transparent);
+  }
+  .phone-screen .lock-ic svg{width:22px; height:22px; color:#fff}
+  .phone-screen .casier-num{font-size:11px; opacity:.7; letter-spacing:.12em; text-transform:uppercase}
+  .phone-screen .casier-id{font-size:18px; font-weight:600; letter-spacing:-.01em}
+  .phone-screen .pill-status{
+    margin-top:6px;
+    font-size:9px; padding:4px 8px; border-radius:99px;
+    background:rgba(34,197,94,.18); color:#86efac;
+    border:1px solid rgba(34,197,94,.25);
+    text-transform:uppercase; letter-spacing:.1em; font-weight:600;
+  }
+
+  /* ============ MARQUEE / PARTNERS ============ */
+  .partners{padding:80px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:#fff}
+  .partners-head{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:24px;
+    margin-bottom:40px; flex-wrap:wrap;
+  }
+  .partners-head p{margin:0; color:var(--muted); font-size:14px; max-width:42ch}
+  .logos-grid{
+    display:grid; grid-template-columns:repeat(6, 1fr); gap:32px;
+    align-items:center;
+  }
+  @media (max-width:880px){.logos-grid{grid-template-columns:repeat(3, 1fr); gap:24px}}
+  .logo-mark{
+    display:flex; align-items:center; justify-content:center;
+    height:48px; color:var(--ink-2);
+    font-weight:700; letter-spacing:-.02em; font-size:18px;
+    opacity:.78; transition:opacity .2s, color .2s;
+  }
+  .logo-mark:hover{opacity:1; color:var(--ink)}
+  .logo-mark .lm-dot{width:8px; height:8px; border-radius:50%; background:var(--ink); margin-right:8px}
+  .logo-mark .lm-sq{width:9px; height:9px; background:var(--ink); margin-right:8px; transform:rotate(45deg)}
+  .logo-mark .lm-bar{width:14px; height:3px; background:var(--ink); margin-right:8px; border-radius:2px}
+  .logo-mark .lm-ring{width:12px; height:12px; border:2.5px solid var(--ink); border-radius:50%; margin-right:8px}
+  .logo-mark .lm-tri{
+    width:0; height:0; border-left:7px solid transparent; border-right:7px solid transparent;
+    border-bottom:11px solid var(--ink); margin-right:8px;
+  }
+  .logo-mark .lm-cross{width:12px; height:12px; position:relative; margin-right:8px}
+  .logo-mark .lm-cross::before, .logo-mark .lm-cross::after{
+    content:""; position:absolute; inset:0; background:var(--ink);
+  }
+  .logo-mark .lm-cross::before{width:2px; left:5px; height:100%}
+  .logo-mark .lm-cross::after{height:2px; top:5px; width:100%}
+
+  /* ============ BENTO ============ */
+  .bento{
+    display:grid; grid-template-columns:1.4fr 1fr 1fr;
+    grid-template-rows:auto auto;
+    gap:16px;
+  }
+  @media (max-width:980px){.bento{grid-template-columns:1fr 1fr}}
+  @media (max-width:680px){.bento{grid-template-columns:1fr}}
+  .bento-card{
+    background:#fff; border:1px solid var(--line);
+    border-radius:var(--radius-l); padding:36px;
+    display:flex; flex-direction:column; gap:18px;
+    position:relative; overflow:hidden;
+    transition:transform .25s, box-shadow .25s, border-color .25s;
+  }
+  .bento-card:hover{transform:translateY(-3px); box-shadow:var(--shadow-card); border-color:var(--line-2)}
+  .bento-card h3{max-width:18ch}
+  .bento-card p{margin:0; color:var(--muted); font-size:15px; line-height:1.55}
+  .bento-tag{
+    font-size:11px; text-transform:uppercase; letter-spacing:.12em;
+    color:var(--muted-2); font-weight:600;
+  }
+  .bento-card.big{grid-column:1 / span 1; grid-row:1 / span 2}
+  @media (max-width:980px){.bento-card.big{grid-column:1 / span 2; grid-row:auto}}
+  @media (max-width:680px){.bento-card.big{grid-column:1}}
+
+  /* Bento visuals */
+  .bento-visual{
+    flex:1; min-height:200px;
+    border-radius:var(--radius-m);
+    background:#F6F6F8;
+    position:relative; overflow:hidden;
+    border:1px solid var(--line);
+  }
+  .bento-card.big .bento-visual{min-height:320px}
+
+  .app-shot{
+    position:absolute; inset:0;
+    display:flex; align-items:flex-end; justify-content:center;
+    padding:36px 24px 0;
+    background:
+      radial-gradient(80% 60% at 50% 0%, color-mix(in oklch, var(--accent-1) 14%, transparent), transparent 70%),
+      linear-gradient(180deg, #F8F8FA, #EFEFF2);
+  }
+  .app-frame{
+    width:78%; max-width:280px; aspect-ratio:9/17.5;
+    border-radius:28px 28px 0 0;
+    background:var(--brand-navy);
+    border:1px solid var(--brand-navy-2); border-bottom:none;
+    padding:8px;
+    box-shadow: 0 30px 60px -20px rgba(10,10,11,.4);
+    position:relative;
+  }
+  .app-frame::before{
+    content:""; position:absolute; left:50%; top:14px;
+    transform:translateX(-50%);
+    width:80px; height:18px; border-radius:99px; background:#000;
+  }
+  .app-frame-inner{
+    border-radius:22px 22px 0 0;
+    background:#FFF; height:100%; padding:42px 16px 0;
+    display:flex; flex-direction:column; gap:10px;
+  }
+  .app-row{
+    display:flex; align-items:center; gap:10px;
+    padding:10px; border-radius:12px;
+    background:#F6F6F8; border:1px solid var(--line);
+    font-size:11px;
+  }
+  .app-row.active{background:var(--brand-navy); color:#fff; border-color:var(--brand-navy)}
+  .app-row .ar-id{font-weight:600; flex:1}
+  .app-row .ar-time{font-size:10px; opacity:.6}
+  .app-row .ar-dot{width:8px; height:8px; border-radius:50%; background:#22c55e}
+  .app-row.locked .ar-dot{background:#94a3b8}
+
+  .map-bg{
+    position:absolute; inset:0;
+    background:#F6F6F8;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:24px 24px;
+    mask-image:radial-gradient(circle at 50% 50%, black 40%, transparent 75%);
+  }
+  .map-pins{position:absolute; inset:0}
+  .pin{
+    position:absolute; width:auto; padding:6px 10px;
+    background:#fff; border:1px solid var(--line-2);
+    border-radius:999px; font-size:11px; font-weight:500;
+    box-shadow:var(--shadow-soft);
+    white-space:nowrap;
+    transform:translate(-50%, -50%);
+  }
+  .pin .pin-dot{
+    width:8px; height:8px; border-radius:50%; background:var(--grad);
+    display:inline-block; margin-right:6px; vertical-align:middle;
+    box-shadow:0 0 0 4px color-mix(in oklch, var(--accent-1) 18%, transparent);
+  }
+
+  .zero-key{
+    position:absolute; inset:0;
+    display:grid; place-items:center;
+    background:linear-gradient(160deg, #fff, #F1F1F4);
+  }
+  .zero-key .key-x{
+    font-size:88px; font-weight:700; letter-spacing:-.05em;
+    background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;
+    line-height:1;
+  }
+  .zero-key .key-lbl{
+    margin-top:8px; font-size:12px; text-transform:uppercase; letter-spacing:.16em;
+    color:var(--muted); font-weight:600;
+  }
+
+  /* ============ SOLUTIONS ============ */
+  .solutions{display:grid; grid-template-columns:repeat(3,1fr); gap:24px}
+  @media (max-width:880px){.solutions{grid-template-columns:1fr}}
+  .sol-card{
+    background:#fff; border:1px solid var(--line);
+    border-radius:var(--radius-l); overflow:hidden;
+    display:flex; flex-direction:column;
+    transition:transform .25s, box-shadow .25s;
+  }
+  .sol-card:hover{transform:translateY(-3px); box-shadow:var(--shadow-card)}
+  .sol-hero{
+    height:220px; position:relative; overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .sol-hero .sh-label{
+    position:absolute; top:14px; left:14px;
+    background:rgba(255,255,255,.86);
+    backdrop-filter:blur(8px);
+    border:1px solid var(--line);
+    padding:5px 10px; border-radius:99px;
+    font-size:11px; font-weight:600; letter-spacing:.06em;
+  }
+  .sol-hero.gym{
+    background:
+      radial-gradient(80% 80% at 80% 20%, color-mix(in srgb, var(--brand-cyan) 24%, transparent), transparent 60%),
+      linear-gradient(180deg, var(--brand-navy), var(--brand-navy-2));
+  }
+  .sol-hero.campus{
+    background:
+      radial-gradient(80% 80% at 20% 80%, color-mix(in oklch, var(--accent-2) 22%, transparent), transparent 60%),
+      linear-gradient(180deg, #FAFAFA, #ECECEE);
+  }
+  .sol-hero.indoor{
+    background:
+      radial-gradient(80% 80% at 50% 50%, color-mix(in srgb, var(--brand-cyan) 30%, transparent), transparent 70%),
+      linear-gradient(180deg, #08153A, var(--brand-navy));
+  }
+  .sol-hero-illus{
+    position:absolute; inset:0;
+    display:grid; place-items:center;
+    color:#fff;
+  }
+  .gym-locker{
+    display:grid; grid-template-columns:repeat(4, 32px); grid-auto-rows:42px; gap:6px;
+    transform: rotate(-2deg);
+  }
+  .gym-locker > div{
+    background:linear-gradient(160deg, var(--brand-navy-2), var(--brand-navy));
+    border:1px solid var(--brand-navy-2);
+    border-radius:6px; position:relative;
+  }
+  .gym-locker > div::after{
+    content:""; position:absolute; left:50%; top:6px; transform:translateX(-50%);
+    width:4px; height:4px; border-radius:50%; background:#22c55e; opacity:.7;
+  }
+  .gym-locker > div:nth-child(7n+1)::after{background:var(--accent-1); opacity:1}
+  .gym-locker > div:nth-child(4n+2)::after{background:#fff; opacity:.35}
+
+  .campus-illus{
+    display:flex; gap:14px; align-items:flex-end; color:var(--ink);
+  }
+  .ci-card{
+    background:#fff; border:1px solid var(--line-2); border-radius:14px;
+    padding:14px; box-shadow:var(--shadow-soft);
+    min-width:120px;
+  }
+  .ci-card .ci-num{font-size:24px; font-weight:600; letter-spacing:-.02em}
+  .ci-card .ci-lbl{font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:.1em; margin-top:2px}
+  .ci-bar{
+    width:8px; background:linear-gradient(180deg, var(--accent-1), var(--accent-2));
+    border-radius:99px; opacity:.8;
+  }
+  .ci-bar.b1{height:48px}.ci-bar.b2{height:72px}.ci-bar.b3{height:36px}
+
+  .indoor-illus{
+    display:flex; gap:10px; align-items:center; color:#fff;
+  }
+  .timer-ring{
+    width:120px; height:120px; border-radius:50%;
+    background: conic-gradient(from -90deg, color-mix(in oklch, 75% 0.2 145, transparent) 0%, color-mix(in oklch, 75% 0.2 145, transparent) 65%, rgba(255,255,255,.08) 65%);
+    display:grid; place-items:center;
+    position:relative;
+  }
+  .timer-ring::before{
+    content:""; position:absolute; inset:8px; border-radius:50%;
+    background:#0F1A12; border:1px solid rgba(255,255,255,.06);
+  }
+  .timer-ring span{position:relative; font-weight:600; font-size:22px; letter-spacing:-.02em}
+  .timer-meta{display:flex; flex-direction:column; gap:6px; font-size:12px}
+  .timer-meta b{font-size:14px}
+
+  .sol-body{padding:32px; display:flex; flex-direction:column; gap:14px; flex:1}
+  .sol-body h3{}
+  .sol-body p{margin:0; color:var(--muted); font-size:15px}
+  .sol-list{list-style:none; margin:8px 0 0; padding:0; display:flex; flex-direction:column; gap:8px}
+  .sol-list li{
+    display:flex; align-items:flex-start; gap:10px;
+    font-size:14px; color:var(--ink-2);
+  }
+  .sol-list li::before{
+    content:""; flex:none; width:16px; height:16px; margin-top:3px;
+    background:var(--ink); border-radius:50%;
+    mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='black' d='M6.5 11.5l-3-3 1-1 2 2 5-5 1 1z'/></svg>") center/contain no-repeat;
+    -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='black' d='M6.5 11.5l-3-3 1-1 2 2 5-5 1 1z'/></svg>") center/contain no-repeat;
+  }
+
+  /* ============ PRICING ============ */
+  .pricing{display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; align-items:stretch}
+  @media (max-width:880px){.pricing{grid-template-columns:1fr}}
+  .price-card{
+    background:#fff; border:1px solid var(--line);
+    border-radius:var(--radius-l); padding:36px;
+    display:flex; flex-direction:column; gap:22px;
+    position:relative;
+    transition:transform .25s, box-shadow .25s;
+  }
+  .price-card:hover{transform:translateY(-3px); box-shadow:var(--shadow-card)}
+  .price-card.featured{
+    background:var(--brand-navy); color:#fff; border-color:var(--brand-navy);
+    box-shadow:0 30px 80px -30px rgba(15,31,71,.55);
+  }
+  .price-card.featured .price-name{color:#fff}
+  .price-card.featured .price-desc{color:#A5A6AC}
+  .price-card.featured .price-cur, .price-card.featured .price-per{color:#A5A6AC}
+  .price-card.featured .price-list li{color:#E5E5E8}
+  .price-card.featured .price-list li::before{background:#fff}
+  .price-card.featured .badge-pop{
+    position:absolute; top:24px; right:24px;
+    font-size:10px; text-transform:uppercase; letter-spacing:.14em; font-weight:700;
+    padding:4px 10px; border-radius:99px;
+    background:var(--grad); color:#fff;
+  }
+  .price-name{
+    font-size:13px; text-transform:uppercase; letter-spacing:.14em; font-weight:600;
+    color:var(--ink);
+  }
+  .price-desc{font-size:14px; color:var(--muted); line-height:1.5}
+  .price-amount{display:flex; align-items:baseline; gap:4px; padding-top:8px; border-top:1px solid var(--line); padding-top:24px}
+  .price-card.featured .price-amount{border-top-color:rgba(255,255,255,.14)}
+  .price-cur{font-size:18px; color:var(--muted)}
+  .price-num{font-size:54px; font-weight:600; letter-spacing:-.035em; line-height:1}
+  .price-per{font-size:14px; color:var(--muted); margin-left:4px}
+  .price-list{
+    list-style:none; margin:0; padding:0;
+    display:flex; flex-direction:column; gap:10px; flex:1;
+  }
+  .price-list li{
+    display:flex; align-items:flex-start; gap:10px;
+    font-size:14px; color:var(--ink-2);
+  }
+  .price-list li::before{
+    content:""; flex:none; width:18px; height:18px; margin-top:1px;
+    background:var(--ink); border-radius:50%;
+    mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'><path fill='black' d='M7.5 13l-3.2-3.2 1.1-1.1 2.1 2.1 5.4-5.4 1.1 1.1z'/></svg>") center/contain no-repeat;
+    -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'><path fill='black' d='M7.5 13l-3.2-3.2 1.1-1.1 2.1 2.1 5.4-5.4 1.1 1.1z'/></svg>") center/contain no-repeat;
+  }
+  .price-list li.muted{color:var(--muted-2)}
+  .price-list li.muted::before{
+    background:var(--muted-2);
+    mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'><path fill='black' d='M4 8h10v2H4z'/></svg>") center/contain no-repeat;
+    -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'><path fill='black' d='M4 8h10v2H4z'/></svg>") center/contain no-repeat;
+  }
+  .price-card .btn{justify-content:center; width:100%}
+  .price-foot{
+    text-align:center; margin-top:48px; color:var(--muted); font-size:14px;
+  }
+  .price-foot a{text-decoration:underline; text-underline-offset:3px; color:var(--ink)}
+
+  /* ============ TESTIMONIALS ============ */
+  .reviews{
+    columns:3; column-gap:20px;
+  }
+  @media (max-width:980px){.reviews{columns:2}}
+  @media (max-width:640px){.reviews{columns:1}}
+  .review{
+    break-inside:avoid; margin:0 0 20px;
+    background:#fff; border:1px solid var(--line);
+    border-radius:var(--radius-l); padding:28px;
+    display:flex; flex-direction:column; gap:16px;
+    transition:transform .25s, box-shadow .25s;
+  }
+  .review:hover{transform:translateY(-2px); box-shadow:var(--shadow-card)}
+  .review.dark{background:var(--brand-navy); color:#fff; border-color:var(--brand-navy)}
+  .review.dark .r-meta b{color:#fff}
+  .review.dark .r-meta span{color:#A5A6AC}
+  .review.dark .r-quote{color:#EDEDF0}
+  .review.accent{
+    background:linear-gradient(160deg, color-mix(in oklch, var(--accent-1) 8%, white), color-mix(in oklch, var(--accent-2) 6%, white));
+    border-color:transparent;
+  }
+  .r-stars{display:flex; gap:2px; color:var(--ink)}
+  .review.dark .r-stars{color:#fff}
+  .r-stars svg{width:14px; height:14px}
+  .r-quote{font-size:16px; line-height:1.55; color:var(--ink-2); letter-spacing:-.005em}
+  .r-quote::before{content:"« "; color:var(--muted-2)}
+  .r-quote::after{content:" »"; color:var(--muted-2)}
+  .r-meta{display:flex; align-items:center; gap:12px; margin-top:auto}
+  .r-avatar{
+    width:40px; height:40px; border-radius:50%;
+    background:linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    color:#fff; display:grid; place-items:center;
+    font-size:13px; font-weight:600; letter-spacing:.02em;
+    flex:none;
+  }
+  .review.dark .r-avatar{background:#fff; color:var(--brand-navy)}
+  .r-meta b{font-size:14px; font-weight:600; color:var(--ink); display:block}
+  .r-meta span{font-size:12px; color:var(--muted); display:block; margin-top:2px}
+  .r-badge{
+    margin-top:4px; align-self:flex-start;
+    font-size:11px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+    padding:4px 8px; border-radius:99px;
+    background:var(--chip); color:var(--ink-2);
+  }
+  .review.dark .r-badge{background:rgba(255,255,255,.12); color:#fff}
+
+  /* ============ TEAM ============ */
+  .team-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;
+  }
+  @media (max-width:880px){.team-grid{grid-template-columns:repeat(2, 1fr)}}
+  @media (max-width:560px){.team-grid{grid-template-columns:1fr}}
+  .member{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius-l);
+    padding:24px; display:flex; flex-direction:column; gap:16px;
+    transition:transform .25s, box-shadow .25s, border-color .25s;
+  }
+  .member:hover{transform:translateY(-3px); box-shadow:var(--shadow-card)}
+  .m-photo{
+    aspect-ratio: 5/4; border-radius:var(--radius-m);
+    background:linear-gradient(160deg, #F2F2F4, #E4E4E8);
+    position:relative; overflow:hidden;
+    display:grid; place-items:center;
+  }
+  .m-photo::after{
+    content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(50% 60% at 30% 20%, color-mix(in oklch, var(--accent-1) 18%, transparent), transparent 70%),
+      radial-gradient(50% 60% at 80% 80%, color-mix(in oklch, var(--accent-2) 14%, transparent), transparent 70%);
+  }
+  .m-mono{
+    font-family:'Inter', sans-serif;
+    font-weight:600; font-size:42px; letter-spacing:-.04em;
+    color:var(--ink); position:relative; z-index:1;
+    background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .m-info b{display:block; font-size:16px; font-weight:600; letter-spacing:-.01em}
+  .m-info span{display:block; font-size:13px; color:var(--muted); margin-top:4px; line-height:1.4}
+
+  /* ============ FOOTER ============ */
+  footer{
+    background:var(--brand-navy); color:#EDEDF0;
+    padding:80px 0 32px;
+  }
+  .foot-top{
+    display:grid; grid-template-columns:1.2fr 1fr 1fr 1fr; gap:48px;
+    padding-bottom:56px; border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  @media (max-width:880px){.foot-top{grid-template-columns:1fr 1fr; gap:36px}}
+  @media (max-width:560px){.foot-top{grid-template-columns:1fr}}
+  .foot-brand{display:flex; flex-direction:column; gap:18px}
+  .foot-brand p{color:#A5A6AC; font-size:14px; max-width:40ch; line-height:1.55; margin:0}
+  .foot-newsletter{
+    display:flex; gap:8px; margin-top:4px;
+    background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); border-radius:99px;
+    padding:5px;
+    max-width:380px;
+  }
+  .foot-newsletter input{
+    flex:1; background:transparent; border:0; color:#fff;
+    padding:8px 14px; font-size:14px; font-family:inherit; outline:none;
+  }
+  .foot-newsletter input::placeholder{color:rgba(255,255,255,.42)}
+  .foot-newsletter button{
+    background:var(--brand-cyan); color:var(--brand-navy); border:0; padding:8px 16px;
+    border-radius:99px; font-weight:600; font-size:13px;
+    cursor:pointer; font-family:inherit;
+    transition:background .15s;
+  }
+  .foot-newsletter button:hover{background:var(--brand-cyan-2)}
+  .foot-reassure{
+    display:flex; align-items:center; gap:8px; margin-top:4px;
+    font-size:12px; color:#6B6D75;
+  }
+  .foot-reassure svg{width:14px; height:14px; flex:none}
+  .foot-col h4{
+    font-size:11px; text-transform:uppercase; letter-spacing:.14em;
+    color:#A5A6AC; font-weight:600; margin-bottom:18px;
+  }
+  .foot-col ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px}
+  .foot-col a{font-size:14px; color:#EDEDF0; transition:color .15s}
+  .foot-col a:hover{color:#fff}
+  .foot-col .contact-line{font-size:14px; color:#EDEDF0; display:flex; align-items:center; gap:8px}
+  .foot-col .contact-line span{color:#6B6D75; font-size:12px; display:block}
+  .foot-bot{
+    padding-top:32px;
+    display:flex; justify-content:space-between; align-items:center;
+    gap:24px; flex-wrap:wrap;
+    font-size:12px; color:#6B6D75;
+  }
+  .foot-bot a{color:#A5A6AC}
+  .foot-legal{display:flex; gap:24px; flex-wrap:wrap}
+
+  /* ============ CTA STRIP ============ */
+  .cta-strip{
+    background:var(--brand-navy); color:#fff;
+    border-radius:var(--radius-xl);
+    padding:72px;
+    position:relative; overflow:hidden;
+    margin:60px 0;
+  }
+  .cta-strip::before{
+    content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(60% 80% at 90% 110%, color-mix(in oklch, var(--accent-2) 40%, transparent), transparent 60%),
+      radial-gradient(60% 80% at 10% -10%, color-mix(in oklch, var(--accent-1) 40%, transparent), transparent 60%);
+    pointer-events:none;
+  }
+  .cta-strip-inner{
+    position:relative; display:grid; grid-template-columns:1fr auto; gap:48px;
+    align-items:center;
+  }
+  @media (max-width:760px){.cta-strip{padding:48px}.cta-strip-inner{grid-template-columns:1fr}}
+  .cta-strip h2{color:#fff; max-width:18ch}
+  .cta-strip p{color:#A5A6AC; margin-top:16px; max-width:48ch; font-size:16px}
+  .cta-strip .btn-light{background:#fff}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>Locker<span class="grad-text">+</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Principale">
+      <a href="#pourquoi">Pourquoi</a>
+      <a href="#solutions">Solutions</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#temoignages">Témoignages</a>
+      <a href="#equipe">Équipe</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-ghost">Nous contacter</a>
+      <a href="#tarifs" class="btn btn-dark">Découvrir nos offres
+        <svg class="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8m0 0L7.5 3.5M11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <span class="hero-pill">
+        <span class="pill-tag">Nouveau</span>
+        Déploiement en cours — Salles &amp; campus franciliens
+      </span>
+      <h1>
+        Le vestiaire,<br/>
+        <span class="grad-text">enfin sans clés</span><br/>
+        <span class="br-thin">ni cadenas perdus.</span>
+      </h1>
+      <p class="lede">
+        LOCKER+ combine des casiers physiques hautement sécurisés et une application mobile dédiée.
+        Vos membres réservent et déverrouillent leur casier en un clic.
+      </p>
+      <div class="hero-cta-row">
+        <a href="#tarifs" class="btn btn-dark btn-lg">Découvrir nos offres
+          <svg class="arrow" width="16" height="16" viewBox="0 0 14 14" fill="none"><path d="M3 7h8m0 0L7.5 3.5M11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#solutions" class="btn btn-light btn-lg">Voir les cas d'usage</a>
+      </div>
+      <div class="hero-meta">
+        <div><b>iOS &amp; Android</b><span>Application dédiée</span></div>
+        <div><b>24/7</b><span>Toujours disponible</span></div>
+        <div><b>0 clé</b><span>Zéro cadenas physique</span></div>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="false">
+      <!-- fallback illustration shown until user drops their own image -->
+      <div class="hero-illustration" aria-hidden="true">
+        <div class="locker-stack">
+          <div class="locker tall lit"></div>
+          <div class="locker"></div>
+          <div class="locker"></div>
+          <div class="locker lit"></div>
+          <div class="locker"></div>
+        </div>
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="lock-ic">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M7 11V8a5 5 0 0 1 10 0v3M6 11h12v9H6z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="casier-num">Casier</div>
+            <div class="casier-id">B-247</div>
+            <span class="pill-status">● Déverrouillé</span>
+          </div>
+        </div>
+      </div>
+      <image-slot id="hero-visual" placeholder="Rendu 3D du casier + smartphone (glisser-déposer)" shape="rounded" radius="32"></image-slot>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POURQUOI / BENTO ============ -->
+<section id="pourquoi" style="padding-top:60px">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span>Pourquoi Locker+</span>
+      <h2>Trois piliers, <span class="grad-text">une seule promesse :</span> le vestiaire qui ne déçoit jamais.</h2>
+    </div>
+    <div class="bento">
+      <article class="bento-card big">
+        <span class="bento-tag">01 — Application connectée</span>
+        <h3>Une appli iOS &amp; Android pour réserver, déverrouiller, oublier le reste.</h3>
+        <p>Authentification biométrique, ouverture en un clic, historique d'utilisation. Pensée pour la rapidité d'usage en entrée/sortie de séance.</p>
+        <div class="bento-visual">
+          <div class="app-shot">
+            <div class="app-frame">
+              <div class="app-frame-inner">
+                <div class="app-row active">
+                  <span class="ar-id">Casier B-247</span>
+                  <span class="ar-time">12:04</span>
+                  <span class="ar-dot"></span>
+                </div>
+                <div class="app-row">
+                  <span class="ar-id">Casier A-118</span>
+                  <span class="ar-time">Hier</span>
+                  <span class="ar-dot"></span>
+                </div>
+                <div class="app-row locked">
+                  <span class="ar-id">Casier VIP-04</span>
+                  <span class="ar-time">3 jours</span>
+                  <span class="ar-dot"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="bento-card">
+        <span class="bento-tag">02 — Flexibilité géographique</span>
+        <h3>Un même système, partout où vous en avez besoin.</h3>
+        <p>Salles de sport, campus, complexes indoor. Déploiement modulaire, gestion centralisée.</p>
+        <div class="bento-visual">
+          <div class="map-bg"></div>
+          <div class="map-pins">
+            <span class="pin" style="left:30%; top:35%"><span class="pin-dot"></span>Fitness Park Paris 12e</span>
+            <span class="pin" style="left:64%; top:55%"><span class="pin-dot"></span>Campus G. Eiffel</span>
+            <span class="pin" style="left:42%; top:72%"><span class="pin-dot"></span>Urban Soccer</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="bento-card">
+        <span class="bento-tag">03 — Expérience optimisée</span>
+        <h3>Zéro cadenas. Zéro perte. Gestion automatisée.</h3>
+        <p>Plus de pinces coupantes, plus de cadenas oubliés. L'attribution est dynamique, la maintenance prévisible.</p>
+        <div class="bento-visual">
+          <div class="zero-key">
+            <div style="text-align:center">
+              <div class="key-x">0</div>
+              <div class="key-lbl">cadenas physique</div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOLUTIONS ============ -->
+<section id="solutions" style="padding-top:40px">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span>Nos solutions &amp; services</span>
+      <h2>Trois terrains, <span class="grad-text">une même infrastructure.</span></h2>
+      <p class="lede">Que vous gériez une grande enseigne fitness, un campus universitaire ou un complexe indoor, l'écosystème Locker+ s'adapte à vos flux, vos durées de session et votre modèle d'abonnement.</p>
+    </div>
+
+    <div class="solutions">
+      <article class="sol-card">
+        <div class="sol-hero gym">
+          <span class="sh-label">Salles de sport</span>
+          <div class="sol-hero-illus">
+            <div class="gym-locker">
+              <div></div><div></div><div></div><div></div>
+              <div></div><div></div><div></div><div></div>
+              <div></div><div></div><div></div><div></div>
+            </div>
+          </div>
+        </div>
+        <div class="sol-body">
+          <h3>Salles de sport</h3>
+          <p>Casiers sécurisés pour les membres, parcours abonné fluide, options premium pour la clientèle fidèle.</p>
+          <ul class="sol-list">
+            <li>Attribution liée au profil d'abonnement</li>
+            <li>Options casier prolongé &amp; VIP</li>
+            <li>Gestion centralisée multi-clubs</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="sol-card">
+        <div class="sol-hero campus">
+          <span class="sh-label">Campus universitaires</span>
+          <div class="sol-hero-illus">
+            <div class="campus-illus">
+              <div class="ci-card"><div class="ci-num">1 248</div><div class="ci-lbl">Casiers actifs</div></div>
+              <div class="ci-bar b1"></div>
+              <div class="ci-bar b2"></div>
+              <div class="ci-bar b3"></div>
+            </div>
+          </div>
+        </div>
+        <div class="sol-body">
+          <h3>Campus universitaires</h3>
+          <p>Casiers personnels pour les étudiants, suivi simplifié pour l'administration, conformité RGPD intégrée.</p>
+          <ul class="sol-list">
+            <li>Authentification via l'ENT de l'établissement</li>
+            <li>Tableau de bord d'occupation par bâtiment</li>
+            <li>Gestion des renouvellements annuels</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="sol-card">
+        <div class="sol-hero indoor">
+          <span class="sh-label">Foot indoor / Complexes</span>
+          <div class="sol-hero-illus">
+            <div class="indoor-illus">
+              <div class="timer-ring"><span>90'</span></div>
+              <div class="timer-meta">
+                <span style="color:#A5A6AC">Session active</span>
+                <b>Casier #14 — Équipe Bleue</b>
+                <span style="color:#86efac">● Sécurisé</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sol-body">
+          <h3>Complexes sportifs &amp; foot indoor</h3>
+          <p>Casiers temporaires pour les joueurs avant et après leurs sessions, libération automatique en fin de créneau.</p>
+          <ul class="sol-list">
+            <li>Attribution à la durée du créneau réservé</li>
+            <li>Libération automatique, zéro intervention staff</li>
+            <li>Rotation rapide entre équipes</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TARIFS ============ -->
+<section id="tarifs" style="padding-top:60px">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span>Abonnements &amp; tarifs</span>
+      <h2>Une grille claire. <span class="grad-text">Aucun frais caché.</span></h2>
+      <p class="lede">Choisissez le plan adapté à votre structure. Sans engagement de durée, modifiable à tout moment depuis votre tableau de bord.</p>
+    </div>
+
+    <div class="pricing">
+      <article class="price-card">
+        <div class="price-name">Basic</div>
+        <p class="price-desc">Idéal pour démarrer. Les fondamentaux de la gestion de vestiaires connectés.</p>
+        <div class="price-amount">
+          <span class="price-cur">€</span><span class="price-num">5</span><span class="price-per">,00 / mois</span>
+        </div>
+        <ul class="price-list">
+          <li>Accès aux données exploitables</li>
+          <li>Gestion de base des comptes</li>
+          <li>Application iOS &amp; Android pour vos membres</li>
+          <li class="muted">Personnalisation</li>
+          <li class="muted">Assistance dédiée</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost">Démarrer en Basic</a>
+      </article>
+
+      <article class="price-card featured">
+        <span class="badge-pop">Le plus choisi</span>
+        <div class="price-name">Plus</div>
+        <p class="price-desc">Des outils complets pour réduire la gestion manuelle et accéder à tous les modules.</p>
+        <div class="price-amount">
+          <span class="price-cur">€</span><span class="price-num">10</span><span class="price-per">,00 / mois</span>
+        </div>
+        <ul class="price-list">
+          <li>Tout le plan Basic, inclus</li>
+          <li>Accès à tous les modules</li>
+          <li>Personnalisation limitée de l'app</li>
+          <li>Assistance par e-mail sous 24h</li>
+          <li>Rapports d'occupation hebdomadaires</li>
+        </ul>
+        <a href="#contact" class="btn btn-light">Passer au Plus</a>
+      </article>
+
+      <article class="price-card">
+        <div class="price-name">Premium</div>
+        <p class="price-desc">La solution avancée pour les structures multi-sites et les programmes VIP.</p>
+        <div class="price-amount">
+          <span class="price-cur">€</span><span class="price-num">15</span><span class="price-per">,00 / mois</span>
+        </div>
+        <ul class="price-list">
+          <li>Personnalisation illimitée</li>
+          <li>Assistance 24/7 gratuite</li>
+          <li>Casiers VIP (locations mois ou année)</li>
+          <li>Fonctionnalités exclusives anticipées</li>
+          <li>Account manager dédié</li>
+        </ul>
+        <a href="#contact" class="btn btn-dark">Contacter les ventes</a>
+      </article>
+    </div>
+
+    <p class="price-foot">Vous gérez plus de 10 sites ? <a href="#contact">Parlons d'un plan Entreprise sur mesure →</a></p>
+  </div>
+</section>
+
+<!-- ============ TÉMOIGNAGES ============ -->
+<section id="temoignages" style="padding-top:40px">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span>Témoignages</span>
+      <h2>Des gestionnaires sereins. <span class="grad-text">Des usagers conquis.</span></h2>
+    </div>
+
+    <div class="reviews">
+      <div class="review">
+        <div class="r-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+        </div>
+        <p class="r-quote">Un grand merci pour votre casier qui me change la vie à chaque fois que je vais à mon club de sport… plus besoin d'acheter des cadenas qu'on perd systématiquement.</p>
+        <div class="r-meta">
+          <div class="r-avatar">LB</div>
+          <div><b>Liam Bah-Payen</b><span>Étudiant — ESIEE Paris</span></div>
+        </div>
+      </div>
+
+      <div class="review dark">
+        <div class="r-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+        </div>
+        <p class="r-quote">Mes clients me remercient pour l'installation… plus besoin de surveiller et enlever les cadenas, et aucun problème de sécurité depuis le déploiement.</p>
+        <div class="r-meta">
+          <div class="r-avatar">SL</div>
+          <div><b>Sophie Legendre</b><span>Directrice — Urban Soccer</span></div>
+        </div>
+        <span class="r-badge">Gestionnaire</span>
+      </div>
+
+      <div class="review">
+        <div class="r-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+        </div>
+        <p class="r-quote">Je vais à la salle depuis près de 5 ans, et depuis qu'ils ont installé ces nouveaux casiers, ça me change complètement mes habitudes.</p>
+        <div class="r-meta">
+          <div class="r-avatar">VA</div>
+          <div><b>Victor Augris</b><span>Habitué — Fitness Park</span></div>
+        </div>
+      </div>
+
+      <div class="review accent">
+        <div class="r-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+        </div>
+        <p class="r-quote">L'alerte anti-effraction nous a notifiés en moins de dix secondes lors d'un test interne. Niveau de sécurité au-dessus de ce que j'attendais.</p>
+        <div class="r-meta">
+          <div class="r-avatar">AM</div>
+          <div><b>Audrey Marchand</b><span>Responsable — Club Crossfit</span></div>
+        </div>
+        <span class="r-badge">Sécurité</span>
+      </div>
+
+      <div class="review">
+        <div class="r-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+        </div>
+        <p class="r-quote">Le réflexe « j'ai oublié mon cadenas » a disparu. C'est aussi simple que d'ouvrir une porte de voiture connectée.</p>
+        <div class="r-meta">
+          <div class="r-avatar">LB</div>
+          <div><b>Lucas Brunet</b><span>Adhérent — On Air Fitness</span></div>
+        </div>
+      </div>
+
+      <div class="review">
+        <div class="r-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 10l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.2L2 10l7.1-1.1z"/></svg>
+        </div>
+        <p class="r-quote">Sur mes deux salles, on a divisé par dix les sollicitations sur les casiers. L'équipe en accueil respire enfin.</p>
+        <div class="r-meta">
+          <div class="r-avatar">CM</div>
+          <div><b>Chloé Masson</b><span>Manager — Réseau fitness indépendant</span></div>
+        </div>
+        <span class="r-badge">Gestionnaire</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PARTENAIRES ============ -->
+<section class="partners" id="partenaires" style="padding:80px 0">
+  <div class="wrap">
+    <div class="partners-head">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>Nos références</span>
+        <h2 style="margin-top:14px; font-size:32px">Ils nous font confiance.</h2>
+      </div>
+      <p>Des grandes enseignes du fitness aux campus, Locker+ équipe des espaces accueillant plus de 200 000 utilisateurs par mois.</p>
+    </div>
+    <div class="logos-grid">
+      <div class="logo-mark"><span class="lm-dot"></span>Basic-Fit</div>
+      <div class="logo-mark"><span class="lm-bar"></span>Urban Soccer</div>
+      <div class="logo-mark"><span class="lm-sq"></span>Fitness Park</div>
+      <div class="logo-mark"><span class="lm-ring"></span>U. G. Eiffel</div>
+      <div class="logo-mark"><span class="lm-tri"></span>On Air Fitness</div>
+      <div class="logo-mark"><span class="lm-cross"></span>Airness</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ÉQUIPE ============ -->
+<section id="equipe" style="padding-top:120px">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span>L'équipe fondatrice</span>
+      <h2>Six expertises. <span class="grad-text">Une seule obsession :</span> la fiabilité.</h2>
+      <p class="lede">Ingénierie, business, juridique, terrain. Locker+ est porté par une équipe complète qui couvre chaque maillon du produit, de la conception du casier à sa mise en conformité réglementaire.</p>
+    </div>
+
+    <div class="team-grid">
+      <article class="member">
+        <div class="m-photo"><span class="m-mono">LB</span></div>
+        <div class="m-info"><b>Lenny Bachour</b><span>Chef de projet</span></div>
+      </article>
+      <article class="member">
+        <div class="m-photo"><span class="m-mono">EA</span></div>
+        <div class="m-info"><b>Eliot Aidoune</b><span>Ingénieur électronique &amp; testeur terrain</span></div>
+      </article>
+      <article class="member">
+        <div class="m-photo"><span class="m-mono">FB</span></div>
+        <div class="m-info"><b>Farouk Bamous</b><span>Business analyst &amp; stratégie marché</span></div>
+      </article>
+      <article class="member">
+        <div class="m-photo"><span class="m-mono">MF</span></div>
+        <div class="m-info"><b>Matthieu Friess</b><span>Ingénieur logiciel &amp; expérience utilisateur</span></div>
+      </article>
+      <article class="member">
+        <div class="m-photo"><span class="m-mono">BE</span></div>
+        <div class="m-info"><b>Bryan El Boustani</b><span>Responsable qualité &amp; contrôle système</span></div>
+      </article>
+      <article class="member">
+        <div class="m-photo"><span class="m-mono">IA</span></div>
+        <div class="m-info"><b>Ilia Abi-Khalil</b><span>Juriste &amp; affaires réglementaires</span></div>
+      </article>
+    </div>
+
+    <!-- CTA final -->
+    <div class="cta-strip">
+      <div class="cta-strip-inner">
+        <div>
+          <h2>Prêt à moderniser vos vestiaires ?</h2>
+          <p>Démo gratuite sur votre site. Installation en moins de 48h. Sans engagement.</p>
+        </div>
+        <a href="#contact" class="btn btn-light btn-lg">Demander une démo
+          <svg class="arrow" width="16" height="16" viewBox="0 0 14 14" fill="none"><path d="M3 7h8m0 0L7.5 3.5M11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="brand" style="color:#fff">
+          <span class="brand-mark on-dark" aria-hidden="true"></span>
+          <span>Locker<span class="grad-text">+</span></span>
+        </div>
+        <p>L'écosystème de casiers connectés et intelligents pour les espaces de sport et les campus. Basé en France, déployé en Île-de-France, en cours d'expansion européenne.</p>
+        <form class="foot-newsletter" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Inscrit ✓';">
+          <input type="email" placeholder="votre@email.com" aria-label="Email" required />
+          <button type="submit">S'inscrire</button>
+        </form>
+        <div class="foot-reassure">
+          <svg viewBox="0 0 16 16" fill="none"><path d="M8 1.5l5.5 2v4c0 3-2.3 5.6-5.5 6.5C4.8 13.1 2.5 10.5 2.5 7.5v-4z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M5.5 8l2 2 3-3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Vos données sont chiffrées et hébergées en France — conformes RGPD.
+        </div>
+      </div>
+
+      <div class="foot-col">
+        <h4>Produit</h4>
+        <ul>
+          <li><a href="#pourquoi">Pourquoi Locker+</a></li>
+          <li><a href="#solutions">Solutions</a></li>
+          <li><a href="#tarifs">Tarifs</a></li>
+          <li><a href="#">App iOS / Android</a></li>
+          <li><a href="#">Tableau de bord</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h4>Entreprise</h4>
+        <ul>
+          <li><a href="#equipe">L'équipe</a></li>
+          <li><a href="#partenaires">Partenaires</a></li>
+          <li><a href="#temoignages">Témoignages</a></li>
+          <li><a href="#">Carrières</a></li>
+          <li><a href="#">Presse</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <ul>
+          <li class="contact-line">
+            <div>
+              <span>E-mail</span>
+              <a href="/cdn-cgi/l/email-protection#8be7eee5e5f2e3eee5f9e2a5e9eae8e3e4fef9cbeeeffea5eef8e2eeeea5edf9"><span class="__cf_email__" data-cfemail="fd91989393849598938f94d39f9c9e9592888fbd989988d3988e949898d39b8f">lenny.bachour@edu.esiee.fr</span></a>
+            </div>
+          </li>
+          <li class="contact-line">
+            <div>
+              <span>Téléphone</span>
+              <a href="tel:+33744877207">+33 7 44 87 72 07</a>
+            </div>
+          </li>
+          <li class="contact-line">
+            <div>
+              <span>Adresse</span>
+              <span style="color:#EDEDF0">Île-de-France, France</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bot">
+      <span>© 2026 Locker+ — Tous droits réservés.</span>
+      <div class="foot-legal">
+        <a href="#">Mentions légales</a>
+        <a href="#">CGV / CGU</a>
+        <a href="#">Politique de confidentialité</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // nav scroll state
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // hide hero fallback illustration once user drops an image
+  const heroSlot = document.querySelector('image-slot#hero-visual');
+  const heroIllu = document.querySelector('.hero-illustration');
+  if(heroSlot && heroIllu){
+    const sync = () => {
+      const filled = !!heroSlot.getAttribute('src') || heroSlot.hasAttribute('filled');
+      heroIllu.style.opacity = filled ? '0' : '1';
+    };
+    new MutationObserver(sync).observe(heroSlot, {attributes:true});
+    sync();
+  }
+
+  // smooth scroll for in-page nav
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href').slice(1);
+      if(!id) return;
+      const el = document.getElementById(id);
+      if(el){
+        e.preventDefault();
+        window.scrollTo({top: el.offsetTop - 60, behavior:'smooth'});
+      }
+    });
+  });
+</script>
+</body>
+</html>
