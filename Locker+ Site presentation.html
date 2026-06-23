@@ -718,6 +718,106 @@
   .cta-strip h2{color:#fff; max-width:18ch}
   .cta-strip p{color:#A5A6AC; margin-top:16px; max-width:48ch; font-size:16px}
   .cta-strip .btn-light{background:#fff}
+
+  /* ============ OFFERS (extend pricing) ============ */
+  .offer-for{
+    display:inline-flex; align-items:center; gap:8px; width:max-content;
+    font-size:11px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+    padding:5px 11px; border-radius:99px;
+    background:var(--chip); color:var(--ink-2);
+  }
+  .price-card.featured .offer-for{background:rgba(255,255,255,.12); color:#fff}
+  .price-quote{display:flex; flex-direction:column; gap:4px; padding-top:24px; border-top:1px solid var(--line)}
+  .price-card.featured .price-quote{border-top-color:rgba(255,255,255,.14)}
+  .price-quote .pq-main{font-size:30px; font-weight:600; letter-spacing:-.025em; line-height:1}
+  .price-quote .pq-hint{font-size:13px; color:var(--muted)}
+  .price-card.featured .price-quote .pq-hint{color:#A5A6AC}
+  .hours-band{
+    display:flex; align-items:flex-start; gap:10px;
+    padding:12px 14px; border-radius:var(--radius-s);
+    background:color-mix(in srgb, var(--brand-cyan) 8%, #fff);
+    border:1px solid color-mix(in srgb, var(--brand-cyan) 24%, var(--line));
+    font-size:13px; color:var(--ink-2); line-height:1.45;
+  }
+  .price-card.featured .hours-band{background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.18); color:#E5E5E8}
+  .hours-band svg{width:18px; height:18px; flex:none; margin-top:1px; color:var(--brand-cyan)}
+  .price-card.featured .hours-band svg{color:var(--brand-cyan-2)}
+
+  /* ============ COMPARISON TABLE ============ */
+  .compare-wrap{
+    overflow-x:auto; border:1px solid var(--line);
+    border-radius:var(--radius-l); background:#fff; box-shadow:var(--shadow-soft);
+  }
+  .compare{width:100%; border-collapse:collapse; min-width:760px}
+  .compare th, .compare td{
+    padding:18px 20px; text-align:left; font-size:14px;
+    border-bottom:1px solid var(--line); vertical-align:middle;
+  }
+  .compare thead th{
+    font-size:12px; text-transform:uppercase; letter-spacing:.08em;
+    color:var(--muted); font-weight:600; background:#FBFBFC;
+  }
+  .compare thead th.us{color:#fff; background:var(--brand-navy); border-radius:0}
+  .compare tbody td.us{background:color-mix(in srgb, var(--brand-cyan) 7%, #fff); font-weight:600; color:var(--ink)}
+  .compare tbody tr:last-child td{border-bottom:none}
+  .compare .row-label{font-weight:600; color:var(--ink)}
+  .compare .yes{color:#0a8f3c; font-weight:600}
+  .compare .no{color:var(--muted-2)}
+  .compare-foot{margin-top:18px; color:var(--muted); font-size:14px; max-width:70ch}
+
+  /* ============ STEPS / COMMENT EN BÉNÉFICIER ============ */
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+  @media (max-width:880px){.steps{grid-template-columns:1fr 1fr}}
+  @media (max-width:560px){.steps{grid-template-columns:1fr}}
+  .step{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius-l);
+    padding:28px; display:flex; flex-direction:column; gap:12px;
+    transition:transform .25s, box-shadow .25s, border-color .25s;
+  }
+  .step:hover{transform:translateY(-3px); box-shadow:var(--shadow-card); border-color:var(--line-2)}
+  .step-num{
+    width:40px; height:40px; border-radius:12px; flex:none;
+    display:grid; place-items:center; font-weight:700; font-size:16px; color:#fff;
+    background:var(--grad);
+    box-shadow:0 10px 24px -10px color-mix(in oklch, var(--accent-2) 70%, transparent);
+  }
+  .step h3{font-size:18px}
+  .step p{margin:0; color:var(--muted); font-size:14px; line-height:1.55}
+
+  /* ============ DEVIS FORM ============ */
+  .devis{
+    display:grid; grid-template-columns:1fr 1.1fr; gap:48px; align-items:start;
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius-xl);
+    padding:48px; box-shadow:var(--shadow-card);
+  }
+  @media (max-width:880px){.devis{grid-template-columns:1fr; gap:32px; padding:32px}}
+  .devis-copy h2{font-size:clamp(28px,3.4vw,40px); margin-bottom:18px}
+  .devis-copy p{color:var(--muted); font-size:15px; line-height:1.6; margin:0 0 20px}
+  .devis-points{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px}
+  .devis-points li{display:flex; align-items:flex-start; gap:10px; font-size:14px; color:var(--ink-2)}
+  .devis-points li::before{
+    content:""; flex:none; width:18px; height:18px; margin-top:1px;
+    background:var(--brand-navy); border-radius:50%;
+    mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'><path fill='black' d='M7.5 13l-3.2-3.2 1.1-1.1 2.1 2.1 5.4-5.4 1.1 1.1z'/></svg>") center/contain no-repeat;
+    -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'><path fill='black' d='M7.5 13l-3.2-3.2 1.1-1.1 2.1 2.1 5.4-5.4 1.1 1.1z'/></svg>") center/contain no-repeat;
+  }
+  .devis-form{display:flex; flex-direction:column; gap:16px}
+  .field-row{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+  @media (max-width:520px){.field-row{grid-template-columns:1fr}}
+  .field{display:flex; flex-direction:column; gap:7px}
+  .field label{font-size:13px; font-weight:600; color:var(--ink-2)}
+  .field input, .field select, .field textarea{
+    width:100%; font-family:inherit; font-size:14px; color:var(--ink);
+    background:#FBFBFC; border:1px solid var(--line-2); border-radius:12px;
+    padding:12px 14px; outline:none; transition:border-color .15s, box-shadow .15s;
+  }
+  .field textarea{resize:vertical; min-height:96px}
+  .field input:focus, .field select:focus, .field textarea:focus{
+    border-color:var(--brand-navy);
+    box-shadow:0 0 0 3px color-mix(in srgb, var(--brand-cyan) 22%, transparent);
+  }
+  .devis-form .btn{justify-content:center; margin-top:4px}
+  .devis-form .form-note{font-size:12px; color:var(--muted-2); text-align:center}
 </style>
 </head>
 <body>
@@ -732,13 +832,14 @@
     <nav class="nav-links" aria-label="Principale">
       <a href="#pourquoi">Pourquoi</a>
       <a href="#solutions">Solutions</a>
-      <a href="#tarifs">Tarifs</a>
+      <a href="#offres">Offres</a>
+      <a href="#comparatif">Comparatif</a>
       <a href="#temoignages">Témoignages</a>
       <a href="#equipe">Équipe</a>
     </nav>
     <div class="nav-cta">
-      <a href="#contact" class="btn btn-ghost">Nous contacter</a>
-      <a href="#tarifs" class="btn btn-dark">Découvrir nos offres
+      <a href="#devis" class="btn btn-ghost">Nous contacter</a>
+      <a href="#offres" class="btn btn-dark">Découvrir nos offres
         <svg class="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8m0 0L7.5 3.5M11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
@@ -763,7 +864,7 @@
         Vos membres réservent et déverrouillent leur casier en un clic.
       </p>
       <div class="hero-cta-row">
-        <a href="#tarifs" class="btn btn-dark btn-lg">Découvrir nos offres
+        <a href="#offres" class="btn btn-dark btn-lg">Découvrir nos offres
           <svg class="arrow" width="16" height="16" viewBox="0 0 14 14" fill="none"><path d="M3 7h8m0 0L7.5 3.5M11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         <a href="#solutions" class="btn btn-light btn-lg">Voir les cas d'usage</a>
@@ -952,67 +1053,272 @@
   </div>
 </section>
 
-<!-- ============ TARIFS ============ -->
-<section id="tarifs" style="padding-top:60px">
+<!-- ============ OFFRES ============ -->
+<section id="offres" style="padding-top:60px">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow"><span class="dot"></span>Abonnements &amp; tarifs</span>
-      <h2>Une grille claire. <span class="grad-text">Aucun frais caché.</span></h2>
-      <p class="lede">Choisissez le plan adapté à votre structure. Sans engagement de durée, modifiable à tout moment depuis votre tableau de bord.</p>
+      <span class="eyebrow"><span class="dot"></span>Nos offres</span>
+      <h2>Trois offres spécialisées. <span class="grad-text">Un devis sur mesure.</span></h2>
+      <p class="lede">Pas de prix figé : chaque site est différent. Dites-nous combien de casiers, quel type de structure et vos besoins — nous établissons un tarif personnalisé et toutes les informations adaptées à votre cas. Locker+ vend la solution aux professionnels : vous gardez vos clients, nous fournissons la technologie, l'installation, l'application, les données et la maintenance.</p>
     </div>
 
     <div class="pricing">
-      <article class="price-card">
-        <div class="price-name">Basic</div>
-        <p class="price-desc">Idéal pour démarrer. Les fondamentaux de la gestion de vestiaires connectés.</p>
-        <div class="price-amount">
-          <span class="price-cur">€</span><span class="price-num">5</span><span class="price-per">,00 / mois</span>
-        </div>
-        <ul class="price-list">
-          <li>Accès aux données exploitables</li>
-          <li>Gestion de base des comptes</li>
-          <li>Application iOS &amp; Android pour vos membres</li>
-          <li class="muted">Personnalisation</li>
-          <li class="muted">Assistance dédiée</li>
-        </ul>
-        <a href="#contact" class="btn btn-ghost">Démarrer en Basic</a>
-      </article>
-
+      <!-- RETROFIT — offre principale -->
       <article class="price-card featured">
-        <span class="badge-pop">Le plus choisi</span>
-        <div class="price-name">Plus</div>
-        <p class="price-desc">Des outils complets pour réduire la gestion manuelle et accéder à tous les modules.</p>
-        <div class="price-amount">
-          <span class="price-cur">€</span><span class="price-num">10</span><span class="price-per">,00 / mois</span>
+        <span class="badge-pop">Offre principale</span>
+        <div class="price-name">Retrofit</div>
+        <span class="offer-for">Salles, campus &amp; coworkings existants</span>
+        <p class="price-desc">Ne remplacez pas vos casiers — rendez-les intelligents. Un kit installé sur vos casiers actuels, par blocs de 16.</p>
+        <div class="price-quote">
+          <span class="pq-main">Devis personnalisé</span>
+          <span class="pq-hint">Indicatif : dès 590&nbsp;€ HT / 16 casiers</span>
         </div>
         <ul class="price-list">
-          <li>Tout le plan Basic, inclus</li>
-          <li>Accès à tous les modules</li>
-          <li>Personnalisation limitée de l'app</li>
-          <li>Assistance par e-mail sous 24h</li>
-          <li>Rapports d'occupation hebdomadaires</li>
+          <li>Kit posé sur vos casiers existants (blocs de 16)</li>
+          <li>Application mobile iOS &amp; Android pour vos membres</li>
+          <li>Interface gestionnaire &amp; données d'usage (jour, heure, durée, saturation)</li>
+          <li>1 an de maintenance inclus</li>
+          <li>Installation progressive, sans remplacer l'infrastructure</li>
         </ul>
-        <a href="#contact" class="btn btn-light">Passer au Plus</a>
+        <div class="hours-band">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><b>2 h gratuites</b> pour vos usagers, puis un tarif horaire que <b>vous fixez librement</b> (ex. 0,50&nbsp;€/h) — un revenu additionnel qui limite les casiers monopolisés.</span>
+        </div>
+        <a href="#devis" class="btn btn-light">Demander mon devis Retrofit</a>
       </article>
 
+      <!-- READY -->
       <article class="price-card">
-        <div class="price-name">Premium</div>
-        <p class="price-desc">La solution avancée pour les structures multi-sites et les programmes VIP.</p>
-        <div class="price-amount">
-          <span class="price-cur">€</span><span class="price-num">15</span><span class="price-per">,00 / mois</span>
+        <div class="price-name">Ready</div>
+        <span class="offer-for">Nouvelles salles &amp; nouveaux sites</span>
+        <p class="price-desc">Vous partez de zéro ? Nous fournissons les casiers déjà connectés, clé en main, prêts à l'emploi.</p>
+        <div class="price-quote">
+          <span class="pq-main">Devis personnalisé</span>
+          <span class="pq-hint">Indicatif : dès 1&nbsp;490&nbsp;€ HT / 16 casiers</span>
         </div>
         <ul class="price-list">
-          <li>Personnalisation illimitée</li>
-          <li>Assistance 24/7 gratuite</li>
-          <li>Casiers VIP (locations mois ou année)</li>
-          <li>Fonctionnalités exclusives anticipées</li>
-          <li>Account manager dédié</li>
+          <li>Casiers métalliques personnalisables fournis</li>
+          <li>Kit connecté Locker+ intégré d'usine</li>
+          <li>Application, interface gestionnaire &amp; données d'usage</li>
+          <li>1 an de maintenance inclus</li>
+          <li>2 h gratuites + tarif horaire libre (modifiable à volonté)</li>
         </ul>
-        <a href="#contact" class="btn btn-dark">Contacter les ventes</a>
+        <a href="#devis" class="btn btn-ghost">Demander mon devis Ready</a>
+      </article>
+
+      <!-- EVENT -->
+      <article class="price-card">
+        <div class="price-name">Event</div>
+        <span class="offer-for">Festivals, salons, compétitions &amp; journées campus</span>
+        <p class="price-desc">Des casiers connectés temporaires, déployés le temps de votre événement et repris ensuite.</p>
+        <div class="price-quote">
+          <span class="pq-main">Devis personnalisé</span>
+          <span class="pq-hint">Packs jusqu'à 300 casiers — à la journée ou multi-jours</span>
+        </div>
+        <ul class="price-list">
+          <li>Packs Starter, Business &amp; Premium (50, 150, 300 casiers)</li>
+          <li>Installation, supervision &amp; reprise par nos équipes</li>
+          <li>Application de réservation &amp; ouverture pour vos visiteurs</li>
+          <li>Tarif utilisateur fixé par vos soins (2 h gratuites incluses)</li>
+          <li>Idéal pour la forte rotation et les flux ponctuels</li>
+        </ul>
+        <a href="#devis" class="btn btn-ghost">Demander mon devis Event</a>
       </article>
     </div>
 
-    <p class="price-foot">Vous gérez plus de 10 sites ? <a href="#contact">Parlons d'un plan Entreprise sur mesure →</a></p>
+    <p class="price-foot">Vous gérez plusieurs sites ? <a href="#devis">Décrivez votre parc, nous bâtissons une offre sur mesure →</a></p>
+  </div>
+</section>
+
+<!-- ============ COMPARATIF CONCURRENTS ============ -->
+<section id="comparatif" style="padding-top:40px">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span>Pourquoi Locker+</span>
+      <h2>Le bon compromis <span class="grad-text">prix, installation &amp; technologie.</span></h2>
+      <p class="lede">Locker+ ne cherche pas à battre les acteurs premium sur la réputation, mais sur l'accessibilité : un prix d'entrée bas, le retrofit de l'existant, l'installation par blocs et une vraie adaptation aux petites structures.</p>
+    </div>
+
+    <div class="compare-wrap">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>Critère</th>
+            <th class="us">Locker+ Retrofit</th>
+            <th>Casiers + cadenas</th>
+            <th>Serrures premium<br/><span style="font-weight:400; text-transform:none; letter-spacing:0">Digilock · Ojmar</span></th>
+            <th>Smart lockers<br/><span style="font-weight:400; text-transform:none; letter-spacing:0">Vecos · Gantner</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-label">Prix indicatif / 16 casiers</td>
+            <td class="us">dès 590&nbsp;€ HT</td>
+            <td>Très faible</td>
+            <td>1 280 – 2 400&nbsp;€</td>
+            <td>Projet sur devis</td>
+          </tr>
+          <tr>
+            <td class="row-label">On garde les casiers existants</td>
+            <td class="us"><span class="yes">Oui — retrofit</span></td>
+            <td><span class="yes">Oui</span></td>
+            <td><span class="no">Souvent serrure par serrure</span></td>
+            <td><span class="no">Remplacement complet</span></td>
+          </tr>
+          <tr>
+            <td class="row-label">Application mobile</td>
+            <td class="us"><span class="yes">Oui</span></td>
+            <td><span class="no">Non</span></td>
+            <td>Selon offre</td>
+            <td><span class="yes">Oui</span></td>
+          </tr>
+          <tr>
+            <td class="row-label">Données d'usage (jour, heure, durée)</td>
+            <td class="us"><span class="yes">Oui</span></td>
+            <td><span class="no">Aucune</span></td>
+            <td>Selon offre</td>
+            <td><span class="yes">Oui, systèmes complets</span></td>
+          </tr>
+          <tr>
+            <td class="row-label">Revenu additionnel (heures payantes)</td>
+            <td class="us"><span class="yes">Oui, tarif libre</span></td>
+            <td><span class="no">Non</span></td>
+            <td><span class="no">Rare</span></td>
+            <td>Selon offre</td>
+          </tr>
+          <tr>
+            <td class="row-label">Adapté aux petites structures</td>
+            <td class="us"><span class="yes">Oui</span></td>
+            <td><span class="yes">Oui</span></td>
+            <td><span class="no">Coût élevé</span></td>
+            <td><span class="no">Projet lourd</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="compare-foot">Plus cher qu'un simple casier à cadenas, mais bien plus accessible qu'une logique de serrures connectées individuelles — avec en prime l'application, les données d'usage et l'installation. Les tarifs concurrents sont indicatifs : ces acteurs communiquent souvent sur devis.</p>
+  </div>
+</section>
+
+<!-- ============ COMMENT EN BÉNÉFICIER ============ -->
+<section id="demarche" style="padding-top:40px">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span>Comment en bénéficier</span>
+      <h2>De votre demande <span class="grad-text">à vos casiers connectés.</span></h2>
+      <p class="lede">Vous êtes une salle, un complexe indoor, un campus, un espace de coworking ou un organisateur d'événement ? Voici le parcours, simple et progressif, pour équiper vos vestiaires.</p>
+    </div>
+
+    <div class="steps">
+      <article class="step">
+        <span class="step-num">1</span>
+        <h3>Vous nous écrivez</h3>
+        <p>Décrivez votre structure, le nombre de casiers, vos contraintes et pourquoi vous voulez moderniser vos vestiaires, via le formulaire ci-dessous.</p>
+      </article>
+      <article class="step">
+        <span class="step-num">2</span>
+        <h3>Diagnostic &amp; démo</h3>
+        <p>Nous étudions votre site, répondons à vos questions et vous montrons le casier connecté en fonctionnement réel.</p>
+      </article>
+      <article class="step">
+        <span class="step-num">3</span>
+        <h3>Devis personnalisé</h3>
+        <p>Vous recevez un tarif clair et toutes les informations : offre Retrofit, Ready ou Event, options et délais d'installation.</p>
+      </article>
+      <article class="step">
+        <span class="step-num">4</span>
+        <h3>Installation pilote</h3>
+        <p>Nous équipons un premier bloc de 16 casiers, sans interrompre l'activité de votre établissement.</p>
+      </article>
+      <article class="step">
+        <span class="step-num">5</span>
+        <h3>Mesure &amp; ROI</h3>
+        <p>Sur 30 jours, vous suivez l'usage réel, l'adoption et les revenus générés par les heures payantes.</p>
+      </article>
+      <article class="step">
+        <span class="step-num">6</span>
+        <h3>Déploiement</h3>
+        <p>On étend le parc à 48, 80, 112 ou 160 casiers, avec la maintenance qui prend le relais après la 1<sup>re</sup> année.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEMANDE DE DEVIS ============ -->
+<section id="devis" style="padding-top:40px">
+  <div class="wrap">
+    <div class="devis">
+      <div class="devis-copy">
+        <span class="eyebrow"><span class="dot"></span>Demande de devis</span>
+        <h2>Dites-nous ce dont <span class="grad-text">vous avez besoin.</span></h2>
+        <p>Comme un projet sur mesure, chaque offre est adaptée à votre site. Remplissez le formulaire : nous revenons vers vous avec un tarif et des informations précises.</p>
+        <ul class="devis-points">
+          <li>Réponse sous 48&nbsp;h ouvrées</li>
+          <li>Diagnostic et démo gratuits, sans engagement</li>
+          <li>Vous gardez la relation avec vos clients</li>
+          <li>Vous fixez librement le tarif horaire après 2&nbsp;h gratuites</li>
+        </ul>
+      </div>
+
+      <form class="devis-form" onsubmit="event.preventDefault(); this.innerHTML='&lt;div style=&quot;padding:32px;text-align:center;font-size:16px;color:var(--ink)&quot;&gt;&lt;b&gt;Merci !&lt;/b&gt;&lt;br/&gt;Votre demande a bien été enregistrée.&lt;br/&gt;Nous revenons vers vous sous 48&amp;nbsp;h.&lt;/div&gt;';">
+        <div class="field-row">
+          <div class="field">
+            <label for="f-nom">Nom &amp; prénom</label>
+            <input id="f-nom" type="text" placeholder="Votre nom" required />
+          </div>
+          <div class="field">
+            <label for="f-structure">Type de structure</label>
+            <select id="f-structure" required>
+              <option value="" disabled selected>Sélectionnez…</option>
+              <option>Salle de sport</option>
+              <option>Complexe indoor / foot (Le Five, UrbanSoccer…)</option>
+              <option>Campus / université</option>
+              <option>Espace de coworking</option>
+              <option>Festival / événement</option>
+              <option>Autre</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-offre">Offre souhaitée</label>
+            <select id="f-offre" required>
+              <option value="" disabled selected>Sélectionnez…</option>
+              <option>Retrofit — moderniser mes casiers existants</option>
+              <option>Ready — casiers fournis &amp; pré-équipés</option>
+              <option>Event — casiers temporaires</option>
+              <option>Je ne sais pas encore, conseillez-moi</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-casiers">Nombre de casiers (estimation)</label>
+            <input id="f-casiers" type="number" min="1" placeholder="ex. 48" />
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-email">E-mail</label>
+            <input id="f-email" type="email" placeholder="votre@email.com" required />
+          </div>
+          <div class="field">
+            <label for="f-tel">Téléphone</label>
+            <input id="f-tel" type="tel" placeholder="06 00 00 00 00" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-msg">Votre besoin — pourquoi, contraintes, délais…</label>
+          <textarea id="f-msg" placeholder="Ex. : 3 salles à équiper, casiers vieillissants, je veux des données d'usage et facturer les heures supplémentaires…"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-dark btn-lg">Envoyer ma demande
+          <svg class="arrow" width="16" height="16" viewBox="0 0 14 14" fill="none"><path d="M3 7h8m0 0L7.5 3.5M11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <span class="form-note">En envoyant ce formulaire, vous acceptez d'être recontacté par Locker+. Données traitées en France, conformes RGPD.</span>
+      </form>
+    </div>
   </div>
 </section>
 
@@ -1185,7 +1491,7 @@
           <h2>Prêt à moderniser vos vestiaires ?</h2>
           <p>Démo gratuite sur votre site. Installation en moins de 48h. Sans engagement.</p>
         </div>
-        <a href="#contact" class="btn btn-light btn-lg">Demander une démo
+        <a href="#devis" class="btn btn-light btn-lg">Demander un devis
           <svg class="arrow" width="16" height="16" viewBox="0 0 14 14" fill="none"><path d="M3 7h8m0 0L7.5 3.5M11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
@@ -1218,7 +1524,8 @@
         <ul>
           <li><a href="#pourquoi">Pourquoi Locker+</a></li>
           <li><a href="#solutions">Solutions</a></li>
-          <li><a href="#tarifs">Tarifs</a></li>
+          <li><a href="#offres">Nos offres</a></li>
+          <li><a href="#comparatif">Comparatif</a></li>
           <li><a href="#">App iOS / Android</a></li>
           <li><a href="#">Tableau de bord</a></li>
         </ul>
