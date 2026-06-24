@@ -819,6 +819,114 @@
   .devis-form .btn{justify-content:center; margin-top:4px}
   .devis-form .form-note{font-size:12px; color:var(--muted-2); text-align:center}
 
+  /* ============ TECHNIQUE / DÉPLOIEMENT ============ */
+  .tech-sub{
+    display:flex; align-items:center; gap:14px; margin:8px 0 22px;
+    font-size:12px; text-transform:uppercase; letter-spacing:.12em;
+    color:var(--muted-2); font-weight:600;
+  }
+  .tech-sub::before, .tech-sub::after{content:""; height:1px; background:var(--line); flex:1}
+
+  /* avant / après */
+  .tech-ba{display:grid; grid-template-columns:1fr 1fr; gap:20px}
+  @media (max-width:720px){.tech-ba{grid-template-columns:1fr}}
+  .ba-card{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius-l);
+    overflow:hidden; display:flex; flex-direction:column;
+  }
+  .ba-head{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    padding:16px 22px; border-bottom:1px solid var(--line);
+  }
+  .ba-head b{font-size:15px; letter-spacing:-.01em}
+  .ba-tag{
+    font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+    padding:5px 11px; border-radius:99px; background:var(--chip); color:var(--ink-2);
+  }
+  .ba-card.after .ba-tag{background:var(--brand-navy); color:#fff}
+  .ba-media{position:relative; aspect-ratio:4/3; background:linear-gradient(160deg,#F5F5F7,#ECECEE)}
+  .ba-media image-slot{position:absolute; inset:0; --is-bg:transparent; --is-border:transparent}
+  .ba-foot{padding:16px 22px; color:var(--muted); font-size:13.5px; line-height:1.55}
+  .ba-foot b{color:var(--ink-2)}
+
+  /* kit grid */
+  .kit-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+  @media (max-width:720px){.kit-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:430px){.kit-grid{grid-template-columns:1fr}}
+  .kit-item{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius-m);
+    padding:16px; display:flex; flex-direction:column; gap:12px;
+    transition:transform .2s, box-shadow .2s, border-color .2s;
+  }
+  .kit-item:hover{transform:translateY(-2px); box-shadow:var(--shadow-card); border-color:var(--line-2)}
+  .kit-media{
+    aspect-ratio:4/3; border-radius:12px; position:relative; overflow:hidden;
+    background:#F6F6F8; border:1px solid var(--line);
+  }
+  .kit-media image-slot{position:absolute; inset:0; --is-bg:transparent; --is-border:transparent}
+  .kit-no{
+    position:absolute; top:8px; left:8px; z-index:1;
+    width:22px; height:22px; border-radius:7px; display:grid; place-items:center;
+    background:var(--brand-navy); color:#fff; font-size:11px; font-weight:700;
+  }
+  .kit-item b{font-size:14px; letter-spacing:-.01em}
+  .kit-item span{font-size:12px; color:var(--muted); line-height:1.45}
+
+  /* feature badges */
+  .tech-badges{display:grid; grid-template-columns:repeat(4,1fr); gap:16px}
+  @media (max-width:760px){.tech-badges{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:430px){.tech-badges{grid-template-columns:1fr}}
+  .badge-feat{
+    display:flex; gap:13px; align-items:flex-start;
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius-m); padding:16px;
+  }
+  .badge-feat .bf-ic{
+    width:38px; height:38px; border-radius:10px; flex:none;
+    display:grid; place-items:center; background:var(--grad); color:#fff;
+    box-shadow:0 8px 20px -10px color-mix(in oklch, var(--accent-2) 70%, transparent);
+  }
+  .badge-feat .bf-ic svg{width:20px; height:20px}
+  .badge-feat b{font-size:13.5px; display:block; letter-spacing:-.01em}
+  .badge-feat span{font-size:12px; color:var(--muted); line-height:1.45}
+
+  /* bottom: time + benefits + data */
+  .tech-bottom{display:grid; grid-template-columns:1fr 1fr; gap:20px}
+  @media (max-width:760px){.tech-bottom{grid-template-columns:1fr}}
+  .tech-panel{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius-l); padding:28px;
+    display:flex; flex-direction:column; gap:20px;
+  }
+  .tech-panel.dark{background:var(--brand-navy); color:#fff; border-color:var(--brand-navy)}
+  .tp-title{font-size:12px; text-transform:uppercase; letter-spacing:.12em; font-weight:600; color:var(--muted)}
+  .tech-panel.dark .tp-title{color:#A5A6AC}
+  .tech-time{display:flex; gap:14px; flex-wrap:wrap}
+  .tt-chip{
+    flex:1; min-width:140px; background:#FBFBFC; border:1px solid var(--line);
+    border-radius:var(--radius-m); padding:18px;
+  }
+  .tt-chip .tt-big{font-size:34px; font-weight:600; letter-spacing:-.03em; line-height:1}
+  .tt-chip .tt-lbl{font-size:13px; color:var(--muted); margin-top:6px}
+  .tech-benefits{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:11px}
+  .tech-benefits li, .tech-data li{display:flex; align-items:flex-start; gap:11px; font-size:14px; color:var(--ink-2)}
+  .tech-benefits li svg{width:18px; height:18px; flex:none; margin-top:1px; color:#0a8f3c}
+  .tech-data{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:14px}
+  .tech-panel.dark .tech-data li{color:#EDEDF0}
+  .tech-data li .td-ic{
+    width:34px; height:34px; border-radius:9px; flex:none; display:grid; place-items:center;
+    background:rgba(255,255,255,.1); color:var(--brand-cyan-2);
+  }
+  .tech-data li .td-ic svg{width:18px; height:18px}
+  .tech-data li b{display:block; font-size:14px}
+  .tech-data li span{display:block; font-size:12px; color:#A5A6AC; margin-top:2px}
+
+  /* photos in media slots */
+  .ba-media img{position:absolute; inset:0; width:100%; height:100%; object-fit:contain; padding:10px; background:#fff}
+  .kit-media img{position:absolute; inset:0; width:100%; height:100%; object-fit:contain; padding:12px; background:#fff}
+  /* graceful fallback when image-slot.js isn't loaded */
+  image-slot{display:block}
+  image-slot:empty{display:grid; place-items:center; padding:14px}
+  image-slot:empty::after{content:attr(placeholder); font-size:12px; color:var(--muted-2); text-align:center; line-height:1.4}
+
   /* ============ MOBILE MENU (hamburger) ============ */
   .nav-toggle{
     display:none; flex:none;
@@ -935,6 +1043,7 @@
       <a href="#solutions">Solutions</a>
       <a href="#offres">Offres</a>
       <a href="#comparatif">Comparatif</a>
+      <a href="#technique">Technique</a>
       <a href="#temoignages">Témoignages</a>
       <a href="#equipe">Équipe</a>
     </nav>
@@ -953,6 +1062,7 @@
     <a href="#solutions">Solutions</a>
     <a href="#offres">Offres</a>
     <a href="#comparatif">Comparatif</a>
+    <a href="#technique">Technique</a>
     <a href="#temoignages">Témoignages</a>
     <a href="#equipe">Équipe</a>
     <a href="#offres" class="btn btn-dark mm-cta">Découvrir nos offres
@@ -1312,6 +1422,134 @@
       </table>
     </div>
     <p class="compare-foot">Plus cher qu'un simple casier à cadenas, mais bien plus accessible qu'une logique de serrures connectées individuelles — avec en prime l'application, les données d'usage et l'installation. Les tarifs concurrents sont indicatifs : ces acteurs communiquent souvent sur devis.</p>
+  </div>
+</section>
+
+<!-- ============ TECHNIQUE / DÉPLOIEMENT ============ -->
+<section id="technique" style="padding-top:40px">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span>Côté technique</span>
+      <h2>Comment se déroule <span class="grad-text">le déploiement d'un casier.</span></h2>
+      <p class="lede">Pour celles et ceux que la technique intéresse : Locker+ Retrofit transforme un casier classique en casier connecté <b>sans remplacer l'infrastructure</b>. Un kit discret, posé sur vos casiers existants, piloté depuis l'application.</p>
+    </div>
+
+    <!-- AVANT / APRÈS -->
+    <div class="tech-ba">
+      <article class="ba-card before">
+        <div class="ba-head"><b>Avant</b><span class="ba-tag">Casier standard</span></div>
+        <div class="ba-media">
+          <img src="locker-assets/ancien_casier.png" alt="Casier standard non connecté" loading="lazy" />
+        </div>
+        <div class="ba-foot">Ouverture manuelle, cadenas personnel, <b>aucune donnée</b> pour le gestionnaire.</div>
+      </article>
+      <article class="ba-card after">
+        <div class="ba-head"><b>Après</b><span class="ba-tag">Casier connecté Locker+</span></div>
+        <div class="ba-media">
+          <img src="locker-assets/nouveau_casier.png" alt="Casier connecté Locker+" loading="lazy" />
+        </div>
+        <div class="ba-foot"><b>Boîtier supérieur</b> (ESP32 + relais), <b>électroaimant 24 V</b>, <b>capteur reed</b> et <b>alimentation 12 V</b> — ouverture via l'application et suivi d'usage.</div>
+      </article>
+    </div>
+
+    <!-- LE KIT RETROFIT -->
+    <div class="tech-sub">Le kit Retrofit</div>
+    <div class="kit-grid">
+      <article class="kit-item">
+        <div class="kit-media"><span class="kit-no">1</span><img src="locker-assets/esp32.jpg" alt="ESP32" loading="lazy" /></div>
+        <b>ESP32</b><span>Microcontrôleur Wi-Fi / Bluetooth qui pilote le bloc de casiers.</span>
+      </article>
+      <article class="kit-item">
+        <div class="kit-media"><span class="kit-no">2</span><img src="locker-assets/relais.webp" alt="Module relais" loading="lazy" /></div>
+        <b>Module relais</b><span>Commande l'ouverture de chaque électroaimant du bloc.</span>
+      </article>
+      <article class="kit-item">
+        <div class="kit-media"><span class="kit-no">3</span><img src="locker-assets/aimant.png" alt="Électroaimant 24 V" loading="lazy" /></div>
+        <b>Électroaimant 24 V</b><span>Verrouillage fiable et silencieux de la porte du casier.</span>
+      </article>
+      <article class="kit-item">
+        <div class="kit-media"><span class="kit-no">4</span><img src="locker-assets/capteur.jpg" alt="Capteur reed" loading="lazy" /></div>
+        <b>Capteur reed</b><span>Détecte l'état ouvert / fermé pour un suivi en temps réel.</span>
+      </article>
+      <article class="kit-item">
+        <div class="kit-media"><span class="kit-no">5</span><img src="locker-assets/alimentation.png" alt="Alimentation 12 V" loading="lazy" /></div>
+        <b>Alimentation 12 V</b><span>Faible tension, sûre et facile à intégrer au mobilier.</span>
+      </article>
+      <article class="kit-item">
+        <div class="kit-media"><span class="kit-no">6</span><img src="locker-assets/app.png" alt="Application mobile Locker+" loading="lazy" /></div>
+        <b>Application mobile</b><span>Réservation, ouverture en un clic et données d'usage.</span>
+      </article>
+    </div>
+
+    <!-- BADGES TECHNIQUES -->
+    <div class="tech-badges" style="margin-top:24px">
+      <div class="badge-feat">
+        <span class="bf-ic"><svg viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4l-6 6a1.5 1.5 0 0 0 2.1 2.1l6-6a4 4 0 0 0 5.4-5.4l-2.3 2.3-2.1-2.1z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+        <div><b>Rétrofit universel</b><span>Compatible avec la majorité des casiers</span></div>
+      </div>
+      <div class="badge-feat">
+        <span class="bf-ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 2.5v5C19 15 16 19 12 21 8 19 5 15 5 10.5v-5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12l2 2 4-4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div><b>Sécurisé</b><span>Verrouillage fiable et connecté</span></div>
+      </div>
+      <div class="badge-feat">
+        <span class="bf-ic"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5a10 10 0 0 1 14 0M8 15.5a6 6 0 0 1 8 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="18.5" r="1.2" fill="currentColor"/></svg></span>
+        <div><b>Connecté</b><span>Pilotage à distance et suivi temps réel</span></div>
+      </div>
+      <div class="badge-feat">
+        <span class="bf-ic"><svg viewBox="0 0 24 24" fill="none"><path d="M9 3v5M15 3v5M7 8h10v3a5 5 0 0 1-10 0z M12 16v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div><b>Faible tension</b><span>Alimentation 12 V, sûre et économe</span></div>
+      </div>
+    </div>
+
+    <!-- ÉTAPES D'INSTALLATION -->
+    <div class="tech-sub" style="margin-top:36px">Étapes d'installation</div>
+    <div class="steps">
+      <article class="step"><span class="step-num">1</span><h3>Diagnostic du casier</h3><p>On vérifie la compatibilité, l'état de la porte et le point de fixation.</p></article>
+      <article class="step"><span class="step-num">2</span><h3>Fixation de l'électroaimant</h3><p>L'électroaimant 24 V est posé pour un verrouillage fiable et silencieux.</p></article>
+      <article class="step"><span class="step-num">3</span><h3>Pose du capteur d'ouverture</h3><p>Le capteur reed détecte l'état ouvert / fermé en temps réel.</p></article>
+      <article class="step"><span class="step-num">4</span><h3>Raccordement du boîtier supérieur</h3><p>Le boîtier ESP32 + relais pilote tout le bloc de casiers.</p></article>
+      <article class="step"><span class="step-num">5</span><h3>Configuration &amp; tests</h3><p>Appairage à l'application, tests d'ouverture, mise en service.</p></article>
+    </div>
+
+    <!-- TEMPS / BÉNÉFICES / DONNÉES -->
+    <div class="tech-bottom" style="margin-top:24px">
+      <div class="tech-panel">
+        <div>
+          <div class="tp-title">Temps d'installation</div>
+          <div class="tech-time" style="margin-top:14px">
+            <div class="tt-chip"><div class="tt-big">≈ 15 min</div><div class="tt-lbl">par casier</div></div>
+            <div class="tt-chip"><div class="tt-big">≈ 4 h</div><div class="tt-lbl">pour 16 casiers (1 bloc)</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="tp-title">Bénéfices client</div>
+          <ul class="tech-benefits" style="margin-top:14px">
+            <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4 10-10.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Pas de remplacement complet du mobilier</li>
+            <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4 10-10.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Installation rapide, sans fermer l'établissement</li>
+            <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4 10-10.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Suivi des usages en temps réel</li>
+            <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4 10-10.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Maintenance simplifiée, à distance</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tech-panel dark">
+        <div class="tp-title" style="color:#A5A6AC">Données disponibles pour le gestionnaire</div>
+        <ul class="tech-data">
+          <li>
+            <span class="td-ic"><svg viewBox="0 0 24 24" fill="none"><path d="M5 19V10M10 19V5M15 19v-6M20 19v-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+            <div><b>Nombre de casiers utilisés par jour</b><span>Mesurez le taux d'occupation réel de vos vestiaires</span></div>
+          </li>
+          <li>
+            <span class="td-ic"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.8"/><path d="M12 8v4l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div><b>Heures de forte utilisation</b><span>Identifiez les pics pour dimensionner votre parc</span></div>
+          </li>
+          <li>
+            <span class="td-ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4a8 8 0 1 0 8 8h-8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+            <div><b>Durée moyenne d'occupation</b><span>Optimisez la rotation et limitez les casiers monopolisés</span></div>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
